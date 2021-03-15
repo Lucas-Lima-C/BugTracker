@@ -18,8 +18,9 @@ namespace BugTracker.Models
 
         }
 
-        public Project(string title, string description)
+        public Project(int id, string title, string description)
         {
+            Id = id;
             Title = title;
             Description = description;
         }

@@ -149,5 +149,13 @@ namespace BugTracker.Controllers
         {
             return _context.Ticket.Any(e => e.Id == id);
         }
+
+        [HttpPost]
+        public IActionResult AjaxMethod()
+        {
+            var tickets = _context.Ticket.ToList();
+
+            return Json(tickets);
+        }
     }
 }

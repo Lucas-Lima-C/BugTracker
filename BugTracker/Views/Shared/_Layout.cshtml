@@ -104,21 +104,23 @@
             </div>
         </ul>
         <!-- End of Sidebar -->
-            <div id="content-wrapper" class="d-flex flex-column">
-                <div id="content">
-                    @RenderBody()
-                </div>
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                @RenderBody()
             </div>
         </div>
+    </div>
 
-        <footer class="footer text-muted" style="right:100px">
-            <div class="container">
-                &copy; 2021 - BugTracker</a>
-            </div>
-        </footer>
-        <script src="~/lib/jquery/dist/jquery.min.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-        @RenderSection("Scripts", required: false)
+    <footer class="footer text-muted" style="right:100px">
+        <div class="container">
+            &copy; 2021 - BugTracker</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

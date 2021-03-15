@@ -149,5 +149,13 @@ namespace BugTracker.Controllers
         {
             return _context.Project.Any(e => e.Id == id);
         }
+
+        [HttpPost]
+        public IActionResult AjaxMethod()
+        {
+            var projects = _context.Project.ToList();
+
+            return Json(projects);
+        }
     }
 }
