@@ -9,7 +9,7 @@
         </div>
         <div class="card-body">
             <p>
-                <a asp-action="Create">Create New</a>
+                <a class="btn btn-info" asp-action="Create">Create New</a>
             </p>
 
             <div class="table-responsive">
@@ -25,6 +25,8 @@
                             <th>Status</th>
                             <th>Type</th>
                             <th>Creation Date</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody></tbody>
@@ -70,8 +72,15 @@
                             { 'data': "priority" },
                             { 'data': "status" },
                             { 'data': "type" },
-                            { 'data': "creationDate" }
-                        ]
+                            { 'data': "creationDate" },
+                            {
+                                    "render": function (data, type, full, meta) { return '<a class="btn btn-info" href="/Tickets/Edit/' + full.id + '">Edit</a>'; }
+                                },
+                                {
+                                    "render": function (data, type, full, meta) { return '<a class="btn btn-danger" href="/Tickets/Delete/' + full.id + '">Delete</a>'; }
+                                }
+                            ],
+                        
                     });
             };
     </script>

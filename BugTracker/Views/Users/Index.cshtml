@@ -9,7 +9,7 @@
         </div>
         <div class="card-body">
             <p>
-                <a asp-action="Create">Create New</a>
+                <a class="btn btn-info" asp-action="Create">Create New</a>
             </p>
 
             <div class="table-responsive">
@@ -19,6 +19,8 @@
                             <th>Id</th>
                             <th>Name</th>
                             <th>Email</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody></tbody>
@@ -57,7 +59,14 @@
                     data: response,
                     columns: [{ 'data': "id" },
                     { 'data': "name" },
-                    { 'data': "email" }]
+                    { 'data': "email" },
+                        {
+                            "render": function (data, type, full, meta) { return '<a class="btn btn-info" href="/Users/Edit/' + full.id + '">Edit</a>'; }
+                        },
+                        {
+                            "render": function (data, type, full, meta) { return '<a class="btn btn-danger" href="/Users/Delete/' + full.id + '">Delete</a>'; }
+                        }
+                    ],
                 });
         };
     </script>

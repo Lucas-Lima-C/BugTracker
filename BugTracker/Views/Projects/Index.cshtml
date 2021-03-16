@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model IEnumerable<BugTracker.Models.Project>
+<!DOCTYPE html>
 
 <html>
 
@@ -9,7 +10,7 @@
         </div>
         <div class="card-body">
             <p>
-                <a asp-action="Create">Create New</a>
+                <a class="btn btn-info" asp-action="Create">Create New</a>
             </p>
 
             <div class="table-responsive">
@@ -19,17 +20,20 @@
                             <th>Id</th>
                             <th>Title</th>
                             <th>Description</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
-                    <tbody></tbody>
+                    <tbody>
+                    </tbody>
                 </table>
             </div>
         </div>
     </div>
-        <script src="~/lib/jquery/dist/jquery.min.js"></script>
-        <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-        <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
-        <script type="text/javascript">
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
             $(function () {
                 $.ajax({
                     type: "POST",
@@ -55,11 +59,21 @@
                         bSort: true,
                         bPaginate: true,
                         data: response,
-                        columns: [{ 'data': "id" },
+                        columns:
+                        [{ 'data': "id" },
                         { 'data': "title" },
-                        { 'data': "description" }]
+                        { 'data': "description" },
+                        {
+                            "render": function (data, type, full, meta)
+                            { return '<a class="btn btn-info" href="/Projects/Edit/' + full.id + '">Edit</a>'; }
+                        },
+                        {
+                            "render": function (data, type, full, meta)
+                            { return '<a class="btn btn-danger" href="/Projects/Delete/' + full.id + '">Delete</a>'; }
+                        }
+                        ],
                     });
             };
-        </script>
+    </script>
 </body>
 </html>
